@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Customer_SaleController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Customer_Sale.cs">
@@ -177,6 +178,11 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Hello\Customer_Sale_List.cshtml" />
+    <Content Include="Views\Customer_Sale\Create.cshtml" />
+    <Content Include="Views\Customer_Sale\Delete.cshtml" />
+    <Content Include="Views\Customer_Sale\Details.cshtml" />
+    <Content Include="Views\Customer_Sale\Edit.cshtml" />
+    <Content Include="Views\Customer_Sale\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

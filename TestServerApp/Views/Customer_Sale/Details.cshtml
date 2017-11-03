@@ -1,0 +1,82 @@
+﻿@model TestServerApp.Customer_Sale
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Customer_Sale</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Invoice_ID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Invoice_ID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Unit_Price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Unit_Price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sold_Price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sold_Price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sale_Price_was)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sale_Price_was)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sold_By)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sold_By)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Product.Type)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
