@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="POSNew12Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer_Sale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_ID" Type="int" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Unit_Price" Type="int" />
+          <Property Name="Sold_Price" Type="int" />
+          <Property Name="Sale_Price_was" Type="int" />
+          <Property Name="Sold_By" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="25" />
+          <Property Name="Model" Type="varchar" MaxLength="30" />
+          <Property Name="Quantity_Available" Type="int" />
+          <Property Name="Quantity_Sold" Type="int" />
+          <Property Name="Unit_Price" Type="int" />
+          <Property Name="Selling_Price" Type="int" />
+          <Property Name="Des" Type="varchar" MaxLength="70" />
+          <Property Name="Date_Updated" Type="datetime" />
+          <Property Name="Unique_Barcode" Type="char" MaxLength="3" />
+        </EntityType>
+        <Association Name="FK__Customer___Produ__2A164134">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Customer_Sale" Type="Self.Customer_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer_Sale">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POSNew12ModelStoreContainer">
+          <EntitySet Name="Customer_Sale" EntityType="Self.Customer_Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Customer___Produ__2A164134" Association="Self.FK__Customer___Produ__2A164134">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Customer_Sale" EntitySet="Customer_Sale" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POSNew12Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer_Sale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Unit_Price" Type="Int32" />
+          <Property Name="Sold_Price" Type="Int32" />
+          <Property Name="Sale_Price_was" Type="Int32" />
+          <Property Name="Sold_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Customer___Produ__2A164134" FromRole="Customer_Sale" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity_Available" Type="Int32" />
+          <Property Name="Quantity_Sold" Type="Int32" />
+          <Property Name="Unit_Price" Type="Int32" />
+          <Property Name="Selling_Price" Type="Int32" />
+          <Property Name="Des" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Updated" Type="DateTime" Precision="3" />
+          <Property Name="Unique_Barcode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Customer_Sale" Relationship="Self.FK__Customer___Produ__2A164134" FromRole="Product" ToRole="Customer_Sale" />
+        </EntityType>
+        <Association Name="FK__Customer___Produ__2A164134">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Customer_Sale" Type="Self.Customer_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer_Sale">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POSNew12Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer_Sale" EntityType="Self.Customer_Sale" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <AssociationSet Name="FK__Customer___Produ__2A164134" Association="Self.FK__Customer___Produ__2A164134">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Customer_Sale" EntitySet="Customer_Sale" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POSNew12ModelStoreContainer" CdmEntityContainer="POSNew12Entities">
+          <EntitySetMapping Name="Customer_Sale">
+            <EntityTypeMapping TypeName="POSNew12Model.Customer_Sale">
+              <MappingFragment StoreEntitySet="Customer_Sale">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Invoice_ID" ColumnName="Invoice_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+                <ScalarProperty Name="Sold_Price" ColumnName="Sold_Price" />
+                <ScalarProperty Name="Sale_Price_was" ColumnName="Sale_Price_was" />
+                <ScalarProperty Name="Sold_By" ColumnName="Sold_By" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="POSNew12Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Quantity_Available" ColumnName="Quantity_Available" />
+                <ScalarProperty Name="Quantity_Sold" ColumnName="Quantity_Sold" />
+                <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+                <ScalarProperty Name="Selling_Price" ColumnName="Selling_Price" />
+                <ScalarProperty Name="Des" ColumnName="Des" />
+                <ScalarProperty Name="Date_Updated" ColumnName="Date_Updated" />
+                <ScalarProperty Name="Unique_Barcode" ColumnName="Unique_Barcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
